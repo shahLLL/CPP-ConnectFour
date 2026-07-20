@@ -8,5 +8,7 @@ class Game {
     public:
         Game();
         void display();
+        bool isOver();
+        bool makeMove(uint8_t column);
 };
 #endif
