@@ -4,5 +4,5 @@
 #include "consts.h"
 #include <string>
 #include <stdexcept>
-std::string draw(Disc disc);
+std::string drawDisc(Disc disc);
 #endif

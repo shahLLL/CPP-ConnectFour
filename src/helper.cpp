@@ -1,5 +1,5 @@
 #include "../headers/helper.h"
-std::string draw(Disc disc) {
+std::string drawDisc(Disc disc) {
     if(disc == Disc::EMPTY)
         return ".";
     if(disc == Disc::RED)
