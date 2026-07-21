@@ -10,6 +10,7 @@ class Game {
     public:
         Game();
         void display();
+        void displayEnd();
         bool isOver();
         bool makeMove(uint8_t column);
 };

@@ -44,6 +44,8 @@ void executeGameLoop() {
         if(!g.makeMove(static_cast<uint8_t>(col)))
             printInvalidMove();
     }
+
+    g.displayEnd();
 }
 
 // Main
