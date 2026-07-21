@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "headers/board.h"
 #include "headers/game.h"
 
@@ -20,15 +21,28 @@ void displayIntro() {
     cout << endl;
 }
 
+// Prints when player makes an invalid move.
+void printInvalidMove() {
+    cout << "INVALID MOVE! PLEASE ENTER A NUMBER CORRESPONDING TO AN EMPTY COLUMN" << endl << endl;
+}
+
 // This function executes the Main Game Loop
 void executeGameLoop() {
     Game g = Game();
+
     while(!g.isOver()) {
         g.display();
         int col;
         cout << "ENTER MOVE: ";
-        cin >> col;
-        g.makeMove(static_cast<uint8_t>(col));
+
+        if(!(cin >> col)) {
+            printInvalidMove();
+            cin.clear(); // Reset cin error state
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear bad text
+            continue;
+        }
+        if(!g.makeMove(static_cast<uint8_t>(col)))
+            printInvalidMove();
     }
 }
 
