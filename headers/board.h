@@ -1,11 +1,13 @@
 #ifndef BOARD_H
 #define BOARD_H
+
 #include <cstdint>
 #include <iostream>
 #include <array>
 #include "consts.h"
 #include "disc.h"
 #include "helper.h"
+
 class Board {
     const uint8_t rows = 6;
     const uint8_t columns = 7;

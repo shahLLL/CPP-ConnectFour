@@ -1,4 +1,6 @@
 #include "../headers/helper.h"
+
+// This function returns a String, specific to a Disc Type I.e Red, Yellow, etc.
 std::string drawDisc(Disc disc) {
     if(disc == Disc::EMPTY)
         return ".";
