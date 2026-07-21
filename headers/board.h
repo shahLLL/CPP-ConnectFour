@@ -21,7 +21,7 @@ class Board {
     bool checkVertical(smallInt col);
     bool checkHorizontal(smallInt col);
     bool checkDiagonalLDUR(smallInt col);
-    bool checkDiagonalLUBR(smallInt col);
+    bool checkDiagonalLUDR(smallInt col);
     void checkConnect(smallInt col);
 
     public:

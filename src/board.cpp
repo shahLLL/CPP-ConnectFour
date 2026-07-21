@@ -120,14 +120,65 @@ bool Board::checkHorizontal(smallInt col) {
 }
 
 bool Board::checkDiagonalLDUR(smallInt col) {
+    smallInt rowCounter = 0;
+    smallInt rowLeft;
+    smallInt colLeft;
+    smallInt rowRight;
+    smallInt colRight;
+    smallInt counter = 0;
+    Disc measure = Disc::EMPTY;
+
+    while((rowCounter < rows) && (board[rowCounter][col] == Disc::EMPTY))
+        rowCounter = rowCounter + 1;
+    
+    if(rowCounter == rows)
+        return false;
+    
+    rowLeft = rowCounter;
+    colLeft = col;
+    while((rowLeft < rows - 1) && (colLeft > 0)) {
+        rowLeft = rowLeft + 1;
+        colLeft = colLeft - 1;
+    }
+
+    rowRight = rowCounter;
+    colRight = col;
+    while((rowRight > 0) && (colRight < columns - 1)) {
+        rowRight = rowRight - 1;
+        colRight = colRight + 1;
+    }
+
+    for(smallInt i = colLeft; i <= colRight; i++) {
+        if(board[rowLeft][i] == Disc::EMPTY) {
+            counter = 0;
+            rowLeft = rowLeft - 1;
+            measure = Disc::EMPTY;
+            continue;
+        }
+
+        if(measure == Disc::EMPTY) {
+            measure = board[rowLeft][i];
+            rowLeft = rowLeft - 1;
+            counter = 1;
+            continue;
+        }
+
+        if(board[rowLeft][i] == measure) 
+            counter = counter + 1;
+        rowLeft = rowLeft - 1;
+
+        if(counter == winningNum)
+            return true;
+    }
+
     return false;
 }
 
-bool Board::checkDiagonalLUBR(smallInt col) {
+bool Board::checkDiagonalLUDR(smallInt col) {
     return false;
 }
 
 void Board::checkConnect(smallInt col) { 
-    connect = checkVertical(col) || checkHorizontal(col) || checkDiagonalLDUR(col) || checkDiagonalLUBR(col);
+    connect = checkVertical(col) || checkHorizontal(col) || checkDiagonalLDUR(col) || checkDiagonalLUDR(col);
 }
 
