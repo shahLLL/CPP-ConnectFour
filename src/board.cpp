@@ -85,7 +85,37 @@ bool Board::checkVertical(smallInt col) {
     return false;
 }
 
+// Checks for a horizontal match given a column (based on last move). Returns true if found, false otherwise.
 bool Board::checkHorizontal(smallInt col) {
+    smallInt rowCounter = 0;
+    smallInt leftBoundary = ((col - 3) >= 0) ? col - 3 : 0;
+    smallInt rightBoundary = ((col + 3) < columns) ? col + 3 : columns - 1;
+    smallInt counter = 0;
+    Disc measure = Disc::EMPTY;
+
+    while(board[rowCounter][col] == Disc::EMPTY)
+        rowCounter = rowCounter + 1;
+
+    for(smallInt i = leftBoundary; i <= rightBoundary; i++) {
+        if(board[rowCounter][i] == Disc::EMPTY) {
+            counter = 0;
+            measure = Disc::EMPTY;
+            continue;
+        }
+
+        if(measure == Disc::EMPTY) {
+            measure = board[rowCounter][i];
+            counter = 1;
+            continue;
+        }
+
+        if(board[rowCounter][i] == measure) 
+            counter = counter + 1;
+
+        if(counter == winningNum)
+            return true;
+    }
+    
     return false;
 }
 
@@ -97,14 +127,7 @@ bool Board::checkDiagonalLUBR(smallInt col) {
     return false;
 }
 
-void Board::checkConnect(smallInt col) {
-    if(checkVertical(col))
-        connect = true;
-    if(checkHorizontal(col))
-        connect = true;
-    if(checkDiagonalLDUR(col))
-        connect = true;
-    if(checkDiagonalLUBR(col))
-        connect = true;
+void Board::checkConnect(smallInt col) { 
+    connect = checkVertical(col) || checkHorizontal(col) || checkDiagonalLDUR(col) || checkDiagonalLUBR(col);
 }
 
