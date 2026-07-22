@@ -30,7 +30,7 @@ void Game::displayEnd() {
         cout << ANSI_RED << "RED WINS 🎉" << ANSI_END << endl;
         return;
     }
-    cout << ANSI_YELLOW << "YELLOW WINS 🥳" << endl;
+    cout << ANSI_YELLOW << "YELLOW WINS 🥳" << ANSI_END << endl;
 
     
 }
