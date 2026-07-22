@@ -8,7 +8,7 @@
 #include "disc.h"
 #include "helper.h"
 
-typedef uint8_t smallInt;
+using smallInt = uint8_t;
 
 class Board {
     const smallInt rows = 6;
