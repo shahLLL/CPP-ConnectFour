@@ -109,8 +109,13 @@ bool Board::checkHorizontal(smallInt col) {
             continue;
         }
 
-        if(board[rowCounter][i] == measure) 
+        if(board[rowCounter][i] == measure) {
             counter = counter + 1;
+        } else {
+            measure = board[rowCounter][i];
+            counter = 1;
+        }
+            
 
         if(counter == winningNum)
             return true;
@@ -164,8 +169,13 @@ bool Board::checkDiagonalLDUR(smallInt col) {
             continue;
         }
 
-        if(board[rowLeft][i] == measure) 
+        if(board[rowLeft][i] == measure) {
             counter = counter + 1;
+        } else {
+            measure = board[rowLeft][i];
+            counter = 1;
+        }
+            
         rowLeft = rowLeft - 1;
 
         if(counter == winningNum)
@@ -220,8 +230,13 @@ bool Board::checkDiagonalLUDR(smallInt col) {
             continue;
         }
 
-        if(board[rowLeft][i] == measure) 
+        if(board[rowLeft][i] == measure) {
             counter = counter + 1;
+        } else {
+            measure = board[rowLeft][i];
+            counter = 1;
+        }
+            
         rowLeft = rowLeft + 1;
 
         if(counter == winningNum)
@@ -235,4 +250,3 @@ bool Board::checkDiagonalLUDR(smallInt col) {
 void Board::checkConnect(smallInt col) { 
     connect = checkVertical(col) || checkHorizontal(col) || checkDiagonalLDUR(col) || checkDiagonalLUDR(col);
 }
-
