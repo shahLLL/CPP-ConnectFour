@@ -22,15 +22,15 @@ void Game::displayEnd() {
     cout << endl << endl;
 
     if(board.isFull()) {
-        cout << ANSI_BLUE << "MATCH TIE 🤝" << ANSI_END << endl;
+        cout << ANSI_BLUE << "MATCH TIE 🤝" << endl;
         return;
     }
 
     if(currentPlayer == Disc::YELLOW) {
-        cout << ANSI_RED << "RED WINS 🎉" << ANSI_END << endl;
+        cout << ANSI_RED << "RED WINS 🎉" << endl;
         return;
     }
-    cout << ANSI_YELLOW << "YELLOW WINS 🥳" << ANSI_END << endl;
+    cout << ANSI_YELLOW << "YELLOW WINS 🥳" << endl;
 
     
 }
