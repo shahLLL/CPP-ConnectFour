@@ -5,6 +5,9 @@ using namespace std;
 // Constructor
 Game::Game(): board(), currentPlayer(Disc::RED) {}
 
+// Returns the Current Plater
+Disc Game::getCurrentPlayer() { return currentPlayer; }
+
 // This function returns a String representing the current state of the game.
 void Game::display() {
     board.draw();

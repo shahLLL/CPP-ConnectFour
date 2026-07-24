@@ -9,6 +9,7 @@ class Game {
     Disc currentPlayer;
     public:
         Game();
+        Disc getCurrentPlayer();
         void display();
         void displayEnd();
         bool isOver();
